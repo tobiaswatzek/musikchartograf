@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"music-charts-tui/internal/api"
-	"music-charts-tui/internal/domain"
+	"musikchartograf/internal/api"
+	"musikchartograf/internal/domain"
 )
 
 func main() {

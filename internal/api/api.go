@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"music-charts-tui/internal/shared"
+	"musikchartograf/internal/shared"
 )
 
 type ApiValidationError struct {

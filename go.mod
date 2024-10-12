@@ -1,4 +1,4 @@
-module music-charts-tui
+module musikchartograf
 
 go 1.23.2
 
