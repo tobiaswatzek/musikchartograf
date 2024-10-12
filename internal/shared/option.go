@@ -20,7 +20,6 @@ func (s *Option[T]) Get() T {
 		return s.value
 	} else {
 		panic("cannot get from None type")
-
 	}
 }
 
