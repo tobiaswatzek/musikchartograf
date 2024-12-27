@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Musikchartograf.App/App.axaml" value="Musikchartograf.App/Musikchartograf.App.csproj" />
+        <entry key="Musikchartograf.App/Assets/Resources.axaml" value="Musikchartograf.App/Musikchartograf.App.csproj" />
+        <entry key="Musikchartograf.App/Views/MainWindow.axaml" value="Musikchartograf.App/Musikchartograf.App.csproj" />
+        <entry key="Musikchartograf.Gui/App.axaml" value="Musikchartograf.Gui/Musikchartograf.Gui.csproj" />
+        <entry key="Musikchartograf.Gui/Views/MainWindow.axaml" value="Musikchartograf.Gui/Musikchartograf.Gui.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

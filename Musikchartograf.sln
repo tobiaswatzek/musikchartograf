@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Data.LastFm", "Musikchartograf.Data.LastFm\Musikchartograf.Data.LastFm.csproj", "{9FE69E4C-977B-4632-8E1C-94A943CFB70F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Console", "Musikchartograf.Console\Musikchartograf.Console.csproj", "{8D42FD68-5D06-4C9D-AD39-6FF08C697687}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.App", "Musikchartograf.App\Musikchartograf.App.csproj", "{4BC518E5-1A8F-40A4-A4DB-B027281B5AE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Data.Db", "Musikchartograf.Data.Db\Musikchartograf.Data.Db.csproj", "{9009F8AD-1D07-4980-B0B9-4B13805F6864}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FE69E4C-977B-4632-8E1C-94A943CFB70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE69E4C-977B-4632-8E1C-94A943CFB70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE69E4C-977B-4632-8E1C-94A943CFB70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE69E4C-977B-4632-8E1C-94A943CFB70F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D42FD68-5D06-4C9D-AD39-6FF08C697687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D42FD68-5D06-4C9D-AD39-6FF08C697687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D42FD68-5D06-4C9D-AD39-6FF08C697687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D42FD68-5D06-4C9D-AD39-6FF08C697687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC518E5-1A8F-40A4-A4DB-B027281B5AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC518E5-1A8F-40A4-A4DB-B027281B5AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC518E5-1A8F-40A4-A4DB-B027281B5AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC518E5-1A8F-40A4-A4DB-B027281B5AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9009F8AD-1D07-4980-B0B9-4B13805F6864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9009F8AD-1D07-4980-B0B9-4B13805F6864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9009F8AD-1D07-4980-B0B9-4B13805F6864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9009F8AD-1D07-4980-B0B9-4B13805F6864}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
