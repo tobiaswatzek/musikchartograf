@@ -1,12 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Data.LastFm", "Musikchartograf.Data.LastFm\Musikchartograf.Data.LastFm.csproj", "{9FE69E4C-977B-4632-8E1C-94A943CFB70F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Data.LastFm", "src\Musikchartograf.Data.LastFm\Musikchartograf.Data.LastFm.csproj", "{9FE69E4C-977B-4632-8E1C-94A943CFB70F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Console", "Musikchartograf.Console\Musikchartograf.Console.csproj", "{8D42FD68-5D06-4C9D-AD39-6FF08C697687}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Console", "src\Musikchartograf.Console\Musikchartograf.Console.csproj", "{8D42FD68-5D06-4C9D-AD39-6FF08C697687}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.App", "Musikchartograf.App\Musikchartograf.App.csproj", "{4BC518E5-1A8F-40A4-A4DB-B027281B5AE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.App", "src\Musikchartograf.App\Musikchartograf.App.csproj", "{4BC518E5-1A8F-40A4-A4DB-B027281B5AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Data.Db", "Musikchartograf.Data.Db\Musikchartograf.Data.Db.csproj", "{9009F8AD-1D07-4980-B0B9-4B13805F6864}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musikchartograf.Data.Db", "src\Musikchartograf.Data.Db\Musikchartograf.Data.Db.csproj", "{9009F8AD-1D07-4980-B0B9-4B13805F6864}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DCBCB37A-510F-4073-ACAA-947A6541C057}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +32,11 @@ Global
 		{9009F8AD-1D07-4980-B0B9-4B13805F6864}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9009F8AD-1D07-4980-B0B9-4B13805F6864}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9009F8AD-1D07-4980-B0B9-4B13805F6864}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4BC518E5-1A8F-40A4-A4DB-B027281B5AE6} = {DCBCB37A-510F-4073-ACAA-947A6541C057}
+		{8D42FD68-5D06-4C9D-AD39-6FF08C697687} = {DCBCB37A-510F-4073-ACAA-947A6541C057}
+		{9009F8AD-1D07-4980-B0B9-4B13805F6864} = {DCBCB37A-510F-4073-ACAA-947A6541C057}
+		{9FE69E4C-977B-4632-8E1C-94A943CFB70F} = {DCBCB37A-510F-4073-ACAA-947A6541C057}
 	EndGlobalSection
 EndGlobal
