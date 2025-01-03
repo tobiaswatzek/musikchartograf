@@ -1,14 +1,11 @@
-using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
-
 namespace Musikchartograf.Data.Db.Models;
 
 public class YearImport(
     Guid id,
     string userName,
     int year,
-    DateTimeOffset start,
-    DateTimeOffset end)
+    DateTime start,
+    DateTime end)
 {
     public Guid Id { get; } = id;
 
@@ -17,8 +14,8 @@ public class YearImport(
 
     public int Year { get; } = year;
 
-    public DateTimeOffset Start { get; } = start;
-    public DateTimeOffset End { get; private set; } = end;
+    public DateTime Start { get; } = start;
+    public DateTime End { get; private set; } = end;
 
-    public void UpdateEnd(DateTimeOffset end) => End = end;
+    public void UpdateEnd(DateTime end) => End = end;
 }

@@ -42,8 +42,11 @@ namespace Musikchartograf.Data.Db.Migrations
                     b.Property<string>("PlayedByUserName")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("PlayedAt")
+                    b.Property<DateTime>("PlayedAt")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("PlayedInWeekNumber")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("TrackId", "PlayedByUserName", "PlayedAt");
 
@@ -87,10 +90,10 @@ namespace Musikchartograf.Data.Db.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("End")
+                    b.Property<DateTime>("End")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("Start")
+                    b.Property<DateTime>("Start")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")

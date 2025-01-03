@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Musikchartograf.Data.Db.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialSetup : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,8 +60,8 @@ namespace Musikchartograf.Data.Db.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", nullable: false),
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
-                    Start = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
-                    End = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                    Start = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    End = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,7 +80,8 @@ namespace Musikchartograf.Data.Db.Migrations
                 {
                     TrackId = table.Column<Guid>(type: "TEXT", nullable: false),
                     PlayedByUserName = table.Column<string>(type: "TEXT", nullable: false),
-                    PlayedAt = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                    PlayedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    PlayedInWeekNumber = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

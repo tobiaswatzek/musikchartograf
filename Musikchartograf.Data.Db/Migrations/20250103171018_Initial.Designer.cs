@@ -11,8 +11,8 @@ using Musikchartograf.Data.Db;
 namespace Musikchartograf.Data.Db.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241225115000_InitialSetup")]
-    partial class InitialSetup
+    [Migration("20250103171018_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,8 +45,11 @@ namespace Musikchartograf.Data.Db.Migrations
                     b.Property<string>("PlayedByUserName")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("PlayedAt")
+                    b.Property<DateTime>("PlayedAt")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("PlayedInWeekNumber")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("TrackId", "PlayedByUserName", "PlayedAt");
 
@@ -90,10 +93,10 @@ namespace Musikchartograf.Data.Db.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("End")
+                    b.Property<DateTime>("End")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("Start")
+                    b.Property<DateTime>("Start")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")

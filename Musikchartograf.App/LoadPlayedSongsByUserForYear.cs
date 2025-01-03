@@ -44,7 +44,7 @@ public sealed class LoadPlayedSongsByUserForYearRequestHandler(
                 yi => yi.UserName == user.Name && yi.Year == request.Year,
                 cancellationToken);
 
-        if (yearImport?.End >= yearEnd)
+        if (yearEnd <= yearImport?.End)
         {
             return new LoadPlayedSongsByUserForYearResponse(yearImport.Start,
                 yearImport.End, 0);
@@ -53,13 +53,14 @@ public sealed class LoadPlayedSongsByUserForYearRequestHandler(
         if (yearImport is null)
         {
             yearImport = new YearImport(Guid.CreateVersion7(), user.Name,
-                request.Year, yearStart, yearEnd);
+                request.Year, yearStart.UtcDateTime, yearEnd.UtcDateTime);
             dataContext.YearImports.Add(yearImport);
         }
         else
         {
-            yearStart = yearImport.End;
-            yearImport.UpdateEnd(yearEnd);
+            yearStart = ISOWeek.ToDateTime(yearImport.End.Year,
+                ISOWeek.GetWeekOfYear(yearImport.End) + 1, DayOfWeek.Monday);
+            yearImport.UpdateEnd(yearEnd.UtcDateTime);
         }
 
         var artists = new Dictionary<string, Artist>();
@@ -108,13 +109,14 @@ public sealed class LoadPlayedSongsByUserForYearRequestHandler(
 
             dataContext.PlayedTracks.Add(new Data.Db.Models.PlayedTrack(
                 track.Id,
-                user.Name, pt.ListenedAt));
+                user.Name, pt.ListenedAt.UtcDateTime,
+                ISOWeek.GetWeekOfYear(pt.ListenedAt.DateTime)));
             playedTracksCount++;
         }
 
         await dataContext.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);
-        
+
         return new LoadPlayedSongsByUserForYearResponse(yearStart, yearEnd,
             playedTracksCount);
     }

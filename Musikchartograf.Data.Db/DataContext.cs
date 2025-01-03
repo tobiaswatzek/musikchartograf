@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Musikchartograf.Data.Db.Models;
 
 namespace Musikchartograf.Data.Db;
@@ -31,7 +32,11 @@ public class DataContext(DbContextOptions<DataContext> options)
         {
             entityBuilder.Property(e => e.TrackId).IsRequired();
             entityBuilder.Property(e => e.PlayedByUserName).IsRequired();
-            entityBuilder.Property(e => e.PlayedAt).IsRequired();
+            entityBuilder.Property(e => e.PlayedAt)
+                .HasConversion<UtcDateTimeConverter>()
+                .IsRequired();
+            entityBuilder.Property(e => e.PlayedInWeekNumber)
+                .IsRequired();
 
             entityBuilder.HasKey(e => new
                 { e.TrackId, e.PlayedByUserName, e.PlayedAt });
@@ -78,8 +83,12 @@ public class DataContext(DbContextOptions<DataContext> options)
                 .ValueGeneratedNever();
             entityBuilder.Property(e => e.UserName).IsRequired();
             entityBuilder.Property(e => e.Year).IsRequired();
-            entityBuilder.Property(e => e.Start).IsRequired();
-            entityBuilder.Property(e => e.End).IsRequired();
+            entityBuilder.Property(e => e.Start)
+                .HasConversion<UtcDateTimeConverter>()
+                .IsRequired();
+            entityBuilder.Property(e => e.End)
+                .HasConversion<UtcDateTimeConverter>()
+                .IsRequired();
 
             entityBuilder.HasKey(e => e.Id);
             entityBuilder.HasOne(e => e.User).WithMany(e => e.YearImports)
@@ -88,3 +97,7 @@ public class DataContext(DbContextOptions<DataContext> options)
         });
     }
 }
+
+public sealed class UtcDateTimeConverter() : ValueConverter<DateTime, DateTime>(
+    v => v,
+    v => new DateTime(v.Ticks, DateTimeKind.Utc));
