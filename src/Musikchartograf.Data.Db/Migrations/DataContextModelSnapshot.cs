@@ -48,9 +48,12 @@ namespace Musikchartograf.Data.Db.Migrations
                     b.Property<int>("PlayedInWeekNumber")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("PlayedInYear")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("TrackId", "PlayedByUserName", "PlayedAt");
 
-                    b.HasIndex("PlayedByUserName");
+                    b.HasIndex("PlayedByUserName", "PlayedInYear", "PlayedInWeekNumber");
 
                     b.ToTable("PlayedTracks");
                 });

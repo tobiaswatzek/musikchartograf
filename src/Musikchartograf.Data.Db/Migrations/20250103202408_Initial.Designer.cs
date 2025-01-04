@@ -11,7 +11,7 @@ using Musikchartograf.Data.Db;
 namespace Musikchartograf.Data.Db.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250103171018_Initial")]
+    [Migration("20250103202408_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -51,9 +51,12 @@ namespace Musikchartograf.Data.Db.Migrations
                     b.Property<int>("PlayedInWeekNumber")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("PlayedInYear")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("TrackId", "PlayedByUserName", "PlayedAt");
 
-                    b.HasIndex("PlayedByUserName");
+                    b.HasIndex("PlayedByUserName", "PlayedInYear", "PlayedInWeekNumber");
 
                     b.ToTable("PlayedTracks");
                 });

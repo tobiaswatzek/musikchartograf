@@ -13,6 +13,7 @@ builder.Logging.ClearProviders();
 builder.Services.AddHttpClient<ILastFmApiClient, LastFmApiClient>();
 builder.Services.AddScoped<LoadPlayedSongsByUserForYearRequestHandler>();
 builder.Services.AddScoped<CalculateWeeklyChartsForUserRequestHandler>();
+builder.Services.AddScoped<CalculateYearlyChartsForUserRequestHandler>();
 builder.Services.AddSingleton<DbConnectionContext>();
 builder.Services.AddTransient<PopulateDbConnectionCommandFilter>();
 builder.Services.AddDbContext<DataContext>((services, opt) =>
@@ -63,8 +64,10 @@ app.AddCommand("weekly",
             new CalculateWeeklyChartsForUserRequest(year, week, common.User),
             ctx.CancellationToken);
 
-        var table = new Table();
-        table.Title = new TableTitle( $"Week {year} {week} Charts for {common.User}");
+        var table = new Table
+        {
+            Title = new TableTitle( $"Week {year} {week} Charts for {common.User}")
+        };
         table.AddColumn(new TableColumn("Rank").RightAligned());
         table.AddColumn(new TableColumn("Name").LeftAligned());
         table.AddColumn(new TableColumn("Artist").LeftAligned());
@@ -74,6 +77,34 @@ app.AddCommand("weekly",
         {
             table.AddRow(c.Rank.ToString(), c.Name, c.Artist,
                 c.Plays.ToString());
+        }
+        
+        AnsiConsole.Write(table);
+    });
+
+app.AddCommand("yearly",
+    async (CommonParameters common, int year,
+        CalculateYearlyChartsForUserRequestHandler handler,
+        CoconaAppContext ctx) =>
+    {
+        var response = await handler.Handle(
+            new CalculateYearlyChartsForUserRequest(year, common.User),
+            ctx.CancellationToken);
+
+        var table = new Table
+        {
+            Title = new TableTitle( $"Year {year} Charts for {common.User}")
+        };
+        table.AddColumn(new TableColumn("Rank").RightAligned());
+        table.AddColumn(new TableColumn("Name").LeftAligned());
+        table.AddColumn(new TableColumn("Artist").LeftAligned());
+        table.AddColumn(new TableColumn("Points").RightAligned());
+        table.AddColumn(new TableColumn("Plays").RightAligned());
+
+        foreach (var c in response.Charts.OrderBy(c => c.Rank))
+        {
+            table.AddRow(c.Rank.ToString(), c.Name, c.Artist,
+                c.Points.ToString(), c.Plays.ToString());
         }
         
         AnsiConsole.Write(table);
@@ -123,7 +154,7 @@ public sealed class PrettyPrintExceptionCommandFilter : ICommandFilter
         catch (Exception e)
         {
             AnsiConsole.WriteException(e);
-            return 1;
+            throw;
         }
     }
 }

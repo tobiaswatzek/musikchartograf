@@ -110,6 +110,7 @@ public sealed class LoadPlayedSongsByUserForYearRequestHandler(
             dataContext.PlayedTracks.Add(new Data.Db.Models.PlayedTrack(
                 track.Id,
                 user.Name, pt.ListenedAt.UtcDateTime,
+                request.Year,
                 ISOWeek.GetWeekOfYear(pt.ListenedAt.DateTime)));
             playedTracksCount++;
         }

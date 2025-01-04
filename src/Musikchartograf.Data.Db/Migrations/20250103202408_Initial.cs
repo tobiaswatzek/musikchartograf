@@ -81,6 +81,7 @@ namespace Musikchartograf.Data.Db.Migrations
                     TrackId = table.Column<Guid>(type: "TEXT", nullable: false),
                     PlayedByUserName = table.Column<string>(type: "TEXT", nullable: false),
                     PlayedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    PlayedInYear = table.Column<int>(type: "INTEGER", nullable: false),
                     PlayedInWeekNumber = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -107,9 +108,9 @@ namespace Musikchartograf.Data.Db.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlayedTracks_PlayedByUserName",
+                name: "IX_PlayedTracks_PlayedByUserName_PlayedInYear_PlayedInWeekNumber",
                 table: "PlayedTracks",
-                column: "PlayedByUserName");
+                columns: new[] { "PlayedByUserName", "PlayedInYear", "PlayedInWeekNumber" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tracks_ArtistId_Name",

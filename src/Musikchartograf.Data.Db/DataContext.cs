@@ -35,6 +35,8 @@ public class DataContext(DbContextOptions<DataContext> options)
             entityBuilder.Property(e => e.PlayedAt)
                 .HasConversion<UtcDateTimeConverter>()
                 .IsRequired();
+            entityBuilder.Property(e => e.PlayedInYear)
+                .IsRequired();
             entityBuilder.Property(e => e.PlayedInWeekNumber)
                 .IsRequired();
 
@@ -47,6 +49,8 @@ public class DataContext(DbContextOptions<DataContext> options)
                 .WithMany(e => e.PlayedTracks)
                 .HasForeignKey(e => e.PlayedByUserName)
                 .IsRequired();
+            entityBuilder.HasIndex(e => new
+                { e.PlayedByUserName, e.PlayedInYear, e.PlayedInWeekNumber });
         });
 
         modelBuilder.Entity<Track>(entityBuilder =>

@@ -52,15 +52,23 @@ public sealed class CalculateWeeklyChartsForUserRequestHandler(
             .Include(t => t.Track).ThenInclude(t => t.Artist)
             .Where(pt =>
                 pt.PlayedByUserName == request.User &&
+                pt.PlayedInYear == request.Year &&
                 pt.PlayedInWeekNumber == request.Week)
-            .GroupBy(pt => pt.TrackId)
+            .Select(pt => new
+            {
+                pt.TrackId,
+                TrackName = pt.Track.Name,
+                ArtistName = pt.Track.Artist.Name,
+                pt.PlayedAt
+            })
+            .GroupBy(pt => new { pt.TrackId, pt.TrackName, pt.ArtistName })
             .Select(g => new
             {
-                TrackId = g.Key,
-                TrackName = g.First().Track.Name,
-                ArtistName = g.First().Track.Artist.Name,
+                g.Key.TrackId,
+                g.Key.TrackName,
+                g.Key.ArtistName,
                 LastPlayedAt =
-                    g.Select(t => t.PlayedAt).OrderDescending().First(),
+                    g.Select(t => t.PlayedAt).Max(),
                 Plays = g.Count()
             })
             .OrderByDescending(x => x.Plays)
